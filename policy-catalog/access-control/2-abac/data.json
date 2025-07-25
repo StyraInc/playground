@@ -1,0 +1,46 @@
+{
+    "user_attributes": {
+        "alice": {
+            "tenure": 20,
+            "title": "owner"
+        },
+        "bob": {
+            "tenure": 15,
+            "title": "employee"
+        },
+        "eve": {
+            "tenure": 5,
+            "title": "employee"
+        },
+        "dave": {
+            "tenure": 5,
+            "title": "customer"
+        }
+    },
+    "pet_attributes": {
+        "dog123": {
+            "adopted": true,
+            "age": 2,
+            "breed": "terrier",
+            "name": "toto"
+        },
+        "dog456": {
+            "adopted": false,
+            "age": 3,
+            "breed": "german-shepherd",
+            "name": "rintintin"
+        },
+        "dog789": {
+            "adopted": false,
+            "age": 2,
+            "breed": "collie",
+            "name": "lassie"
+        },
+        "cat123": {
+            "adopted": false,
+            "age": 1,
+            "breed": "fictitious",
+            "name": "cheshire"
+        }
+    }
+}

@@ -1,0 +1,2 @@
+name: "Ingress Conflicts"
+description: Ensure no ingress gets created that conflicts with an existing ingress

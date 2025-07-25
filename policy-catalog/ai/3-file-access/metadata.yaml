@@ -1,0 +1,2 @@
+name: "File Access"
+description: Ensure training file access is restricted to the appropriate groups.

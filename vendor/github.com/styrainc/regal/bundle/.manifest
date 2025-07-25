@@ -1,0 +1,7 @@
+{
+  "roots": ["regal"],
+  "metadata": {
+    "name": "regal"
+  },
+  "rego_version": 1
+}

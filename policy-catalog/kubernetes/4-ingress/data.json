@@ -1,0 +1,33 @@
+{
+    "kubernetes": {
+        "ingresses": {
+            "ecommerce": {
+                "foo": {
+                    "kind": "Ingress",
+                    "metadata": {
+                        "name": "foo",
+                        "namespace": "ecommerce"
+                    },
+                    "spec": {
+                        "rules": [
+                            {
+                                "host": "initech.com",
+                                "http": {
+                                    "paths": [
+                                        {
+                                            "path": "/finance",
+                                            "backend": {
+                                                "serviceName": "banking",
+                                                "servicePort": 443
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

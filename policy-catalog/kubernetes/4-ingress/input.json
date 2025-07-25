@@ -1,0 +1,40 @@
+{
+    "apiVersion": "admission.k8s.io/v1beta1",
+    "kind": "AdmissionReview",
+    "request": {
+        "kind": {
+            "group": "extensions",
+            "kind": "Ingress",
+            "version": "v1beta1"
+        },
+        "operation": "CREATE",
+        "userInfo": {
+            "groups": null,
+            "username": "alice"
+        },
+        "object": {
+            "metadata": {
+                "name": "prod",
+                "namespace": "ecommerce"
+            },
+            "spec": {
+                "rules": [
+                    {
+                        "host": "initech.com",
+                        "http": {
+                            "paths": [
+                                {
+                                    "path": "/finance",
+                                    "backend": {
+                                        "serviceName": "banking",
+                                        "servicePort": 443
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Rego Playground</title>
+  <link rel="icon" href="/images/favicon.ico" type="image/ico" />
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+  <%= htmlWebpackPlugin.options.analytics %>
+    <%= htmlWebpackPlugin.options.tagManager %>
+</head>
+
+<body>
+  <div id="playground-container" hidden>
+    <div id="header" class="level toolbar">
+      <div class="level-left toolbar-item">
+        <img src="/images/opa.svg" id="opa-logo" alt="OPA logo" class="level-item" />
+
+        <h3 id="title" class="level-item title is-4">Rego Playground</h3>
+
+        <div id="dropdown-examples" class="dropdown">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <span>Examples</span>
+              <img class="button-icon" src="/images/arrow-down-icon.png" />
+            </button>
+          </div>
+
+          <div class="dropdown-menu" role="menu">
+            <div class="dropdown-content panel">
+              <div class="panel-block search-block">
+                <p class="control">
+                  <input class="input search-input" type="text" placeholder="Search">
+                </p>
+              </div>
+              <div class="panel-tabs"></div>
+              <div class="panel-items"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons level-right toolbar-item">
+        <div id="rego-version-options" class="dropdown level-item">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <span class="rego-version">??</span>
+              <img class="button-icon" src="/images/arrow-down-icon.png" />
+            </button>
+          </div>
+
+          <div class="dropdown-menu" role="menu">
+            <div class="dropdown-content panel">
+              <div class="panel-items p-2">
+                <div class="eval-option">
+                  <h1>Set the Rego version</h1>
+                  <p>Specify the Rego version for the module.</p>
+                  <p><strong>v0</strong> is the default, which is the syntax enforced pre-OPA v1.0.</p>
+                  <p><strong>v1</strong> is the Rego syntax enforced by OPA v1.0.</p>
+                  <label class="button">
+                    <input id="rego-version-v0-switch" type="radio">
+                    v0
+                  </label>
+                  <label class="button">
+                    <input id="rego-version-v1-switch" type="radio">
+                    v1
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="dropdown-options" class="dropdown level-item">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <span>Options</span>
+              <img class="button-icon" src="/images/arrow-down-icon.png" />
+            </button>
+          </div>
+
+          <div class="dropdown-menu" role="menu">
+            <div class="dropdown-content panel">
+              <div class="panel-items p-2">
+                <div class="eval-option">
+                  <h1>Strict</h1>
+                  <p>
+                    When enabled, the Rego compiler has an expanded set of constraints,
+                    which will be treated as errors when violated. E.g. duplicate imports, unused local variable
+                    assignments, shadowing of reserved 'input' and 'data' keywords, and use of some deprecated built-in
+                    functions.
+                  </p>
+                  <label class="button">
+                    <input id="strict-switch" type="checkbox" checked>
+                    Enabled
+                  </label>
+                </div>
+
+                <div class="eval-option">
+                  <h1>Coverage</h1>
+                  <p>
+                    Coverage explains which statements were evaluated. Red expressions were never evaluated. Red rule
+                    heads were never defined. Green expressions were evaluated at least once. Green rule heads were
+                    defined at least once.
+                  </p>
+                  <label class="button">
+                    <input id="explain-switch" type="checkbox">
+                    Enabled
+                  </label>
+                </div>
+
+                <div class="eval-option">
+                  <h1>Built-in Error Behaviour</h1>
+                  <p>
+                    By default, built-in function errors are ignored, results will be from non-erroring code paths.
+                  </p>
+                  <p>
+                    If <strong>Strict</strong> is selected, execution will exit early when the first built-in function
+                    error is encountered.
+                    If <strong>Show All</strong> is selected, all built-in errors from all code paths will be returned
+                    as an errors.
+                  </p>
+                  <label class="button">
+                    <input id="default-built-in-errors-switch" type="radio">
+                    Default
+                  </label>
+                  <label class="button">
+                    <input id="strict-built-in-errors-switch" type="radio">
+                    Strict
+                  </label>
+                  <label class="button">
+                    <input id="all-built-in-errors-switch" type="radio">
+                    Show All
+                  </label>
+                </div>
+                <div class="eval-option">
+                  <h1>Live Linting</h1>
+                  <p>
+                    By default, linting is performed as you type. Disable this to only lint on evaluation.
+                  </p>
+                  <label class="button">
+                    <input id="live-linting-switch" type="checkbox">
+                    Enabled
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button id="evaluate-button" class="level-item button is-info has-tooltip-bottom"
+          data-tooltip="Query & view results in the output">
+          <img class="button-icon" src="/images/play-icon.png" />
+          <span id="evaluate-button-text" class="button-label">Evaluate</span>
+        </button>
+
+        <button id="format-button" class="level-item button is-info has-tooltip-bottom"
+          data-tooltip="Reformat the policy.">
+          <img class="button-icon" src="/images/format-icon.png" />
+          <span class="button-label">Format</span>
+        </button>
+
+        <button id="instructions-button" class="level-item button is-info has-tooltip-bottom has-not-modal-tooltip"
+          data-tooltip="View instructions">
+          <img class="button-icon" src="/images/instructions-icon.png" />
+          <span class="button-label">Instructions</span>
+        </button>
+
+        <button id="publish-button" class="level-item button is-info has-tooltip-bottom has-not-modal-tooltip"
+          data-tooltip="Update, install, & run">
+          <img id="publish_button_image" class="button-icon" src="/images/github-mark.png" />
+          <span class="button-label">Publish</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="body">
+      <div id="playground-content">
+        <div id="policy-editor">
+          <!-- Codemirror Rego editor -->
+        </div>
+
+        <div id="side-panel">
+          <div id="io-panel">
+            <div id="input-pane" class="split-pane">
+              <div class="panel-title">
+                <span>INPUT</span>
+              </div>
+              <div class='editor'></div>
+            </div>
+
+            <div id="data-pane" class="split-pane">
+              <div class="panel-title">
+                <span>DATA</span>
+              </div>
+              <div class='editor'></div>
+            </div>
+
+            <div id="output-pane" class="split-pane">
+              <div class="panel-title">
+                <span>OUTPUT</span>
+              </div>
+              <div class='editor'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="v0-upgrade-message" class="display-none">
+        <div>
+          Your Rego is not compatible with OPA <code>>=v1.0.0</code>. You are encouraged to reformat your Rego with
+          <code>opa fmt</code> or click the
+          Format button above. For more information, check the
+          <a target="_blank" href="https://www.openpolicyagent.org/docs/latest/v0-upgrade/#upgrading-rego">
+            upgrade documentation<!--
+          --></a>.
+        </div>
+        <button id="v0-upgrade-message-dismiss">Dismiss</button>
+      </div>
+      <div id="footer" class="level toolbar">
+        <div class="level-left toolbar-item">
+        </div>
+        <div class="level-right toolbar-item">
+          <span class="opa-version">v??.??.??</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="share_modal" class="modal" hidden>
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box">
+        <span class="tag status-tag"></span>
+        <div class="modal-info">
+
+          <div class="denied-level">
+
+            <button id="auth-github-button" class="is-small level-right button is-info" style="margin-bottom: 24px;">
+              Authorize with GitHub to create a share link
+            </button>
+
+            <div class="is-size-7">
+              Playground state is saved publicly as a <a href="https://gist.github.com">GitHub Gist</a>. 
+              To share your state, you must authorize the Playground to write to your GitHub account's Gists.
+            </div>
+          </div>
+
+          <div class="share-level">
+            <div class="level modal-title">
+              <h1 class="subtitle">Share</h1>
+            </div>
+
+            <code id="share-url" class="level" style="margin-bottom: 24px;">
+                <pre class="copy-value new-share-url"></pre>
+                <button
+                  id="copy-share-button"
+                  class="copy-button is-small level-right button is-info"
+                >
+                  Copy
+                </button>
+            </code>
+
+            <div class="level modal-title">
+              <h1 class="subtitle">Gist</h1>
+            </div>
+
+            <code id="gist-url" class="level" style="margin-bottom: 24px;">
+                <pre class="copy-value new-gist-url"></pre>
+                <button
+                  id="copy-share-button"
+                  class="copy-button is-small level-right button is-info"
+                >
+                  Copy
+                </button>
+            </code>
+          </div>
+
+          <div class="install-level">
+            <h1 class="subtitle">Install OPA</h1>
+
+            <span class="tags has-addons">
+              <a target="https://www.openpolicyagent.org/docs/latest/#running-opa"
+                href="https://www.openpolicyagent.org/docs/latest/#running-opa" class="opa-release-version tag"></a>
+              <a target="https://www.openpolicyagent.org/docs/latest/#running-opa"
+                href="https://www.openpolicyagent.org/docs/latest/#running-opa" class="tag is-info">
+                OPA installation docs
+              </a>
+            </span>
+          </div>
+
+          <div class="level tabs os-tabs">
+            <ul>
+              <li><a id="linux">Linux</a></li>
+              <li><a id="mac">macOS</a></li>
+              <li><a id="win">Windows</a></li>
+            </ul>
+          </div>
+
+          <code class="level">
+              <pre class="copy-value os-text"></pre>
+              <button
+                id="copy-install-button"
+                class="copy-os-button is-small copy-button level-right button is-info"
+              >
+                Copy
+              </button>
+           </code>
+
+          <div id="under-construction"> 
+            <h1 class="subtitle">The following features are temporarily disabled:</h1>
+            <ul class="bullets is-size-7 sublevel">
+              <li>Run OPA with playground policy</li>
+              <li>Query OPA with playground input</li>
+            </ul>
+          </div>
+
+          <div id="run-opa">
+            <div class="level">
+              <h1 class="subtitle">Run OPA with playground policy</h1>
+            </div>
+
+            <div class="is-size-7">
+              Heads up! The Rego playground is intended for development. Don't rely on it for your production
+              deployments.
+            </div>
+
+            <code class="level">
+                <pre class="copy-value run-text"></pre>
+                <button
+                  id="copy-run-button"
+                  class="copy-button is-small level-right button is-info"
+                >
+                  Copy
+                </button>
+            </code>
+          </div>
+
+          <div id="query-opa">
+            <div class="level">
+              <h1 class="subtitle">Query OPA with playground input</h1>
+            </div>
+
+            <div class="is-size-7">
+              Test by piping your playground's JSON input into your OPA served playground policy
+            </div>
+
+            <code class="level">
+                <pre class="copy-value query-text"></pre>
+                <button
+                  id="copy-query-button"
+                  class="copy-button is-small level-right button is-info"
+                  >
+                Copy
+                </button>
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
+
+  </div>
+</body>
+
+</html>

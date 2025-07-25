@@ -1,0 +1,34 @@
+{
+    "parsed_path": [
+        "v1",
+        "chat",
+        "completions"
+    ],
+    "attributes": {
+        "request": {
+            "http": {
+                "headers": {
+                    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkphbmUgRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJncm91cHMiOlsiaW50ZXJucyJdfQ.sVhc54OVUCuqPG1XidZo9hlAp1pptWP9lTFrFtN6aTY"
+                },
+                "host": "example-ai-app",
+                "method": "POST",
+                "path": "/v1/chat/completions",
+                "protocol": "HTTP/1.1"
+            }
+        }
+    },
+    "parsed_body": {
+        "model": "gpt-N",
+        "messages": [
+            {
+                "role": "system",
+                "content": "Welcome to our generative language model system! This AI-powered tool is designed to assist you with a wide range of tasks, from generating creative content and answering questions to providing detailed explanations and helping with programming queries. Leveraging advanced machine learning techniques, this system can understand and produce human-like text based on the prompts you provide. Whether you're looking for writing inspiration, technical support, or general information, our model is here to help. Simply enter your query, and let the system generate the information or content you need. We hope you find it useful and engaging."
+            },
+            {
+                "role": "user",
+                "content": "Please tell me about user@example.com"
+            }
+        ]
+    },
+    "parsed_query": {}
+}

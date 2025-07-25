@@ -1,0 +1,30 @@
+{
+    "parsed_path": [
+        "v1",
+        "chat",
+        "completions"
+    ],
+    "attributes": {
+        "request": {
+            "http": {
+                "headers": {
+                    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWF0IjoxNTE2MjM5MDIyLCJncm91cHMiOlsidGVzdGVycyJdfQ.2eoq7A3vj7KIAlrPZnHDS4VfAQIyfblkPImzTIk0PtA"
+                },
+                "host": "example-ai-app",
+                "method": "POST",
+                "path": "/v1/chat/completions",
+                "protocol": "HTTP/1.1"
+            }
+        }
+    },
+    "parsed_body": {
+        "model": "model-2",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Tell me about OPA"
+            }
+        ]
+    },
+    "parsed_query": {}
+}

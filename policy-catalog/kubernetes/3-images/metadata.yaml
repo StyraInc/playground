@@ -1,0 +1,2 @@
+name: "Image Safety"
+description: Ensure every image in a pod comes from a trusted registry

@@ -1,0 +1,6 @@
+addr: localhost 
+no-persist: true
+external-url: http://localhost:8181
+ui-content-root: ./build/ui
+verbose: true
+log-format: json-pretty

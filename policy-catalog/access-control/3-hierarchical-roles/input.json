@@ -1,0 +1,7 @@
+{
+    "user": "alice",
+    "action": "delete-project",
+    "roles": [
+        "tech-lead"
+    ]
+}

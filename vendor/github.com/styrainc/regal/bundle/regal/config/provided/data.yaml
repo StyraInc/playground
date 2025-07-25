@@ -1,0 +1,231 @@
+features:
+  remote:
+    check-version: true
+rules:
+  bugs:
+    annotation-without-metadata:
+      level: error
+    argument-always-wildcard:
+      except-function-name-pattern: ^mock_
+      level: error
+    constant-condition:
+      level: error
+    deprecated-builtin:
+      level: error
+    duplicate-rule:
+      level: error
+    if-empty-object:
+      level: ignore
+    if-object-literal:
+      level: error
+    import-shadows-rule:
+      level: error
+    impossible-not:
+      level: error
+    inconsistent-args:
+      level: error
+    internal-entrypoint:
+      level: error
+    invalid-metadata-attribute:
+      level: error
+    leaked-internal-reference:
+      level: error
+    not-equals-in-loop:
+      level: error
+    redundant-existence-check:
+      level: error
+    redundant-loop-count:
+      level: error
+    rule-assigns-default:
+      level: error
+    rule-named-if:
+      level: error
+    rule-shadows-builtin:
+      level: error
+    sprintf-arguments-mismatch:
+      level: error
+    time-now-ns-twice:
+      level: error
+    top-level-iteration:
+      level: error
+    unassigned-return-value:
+      level: error
+    unused-output-variable:
+      level: error
+    var-shadows-builtin:
+      level: error
+    zero-arity-function:
+      level: error
+  custom:
+    forbidden-function-call:
+      forbidden-functions: []
+      level: ignore
+    missing-metadata:
+      level: ignore
+    naming-convention:
+      level: ignore
+    narrow-argument:
+      level: ignore
+    one-liner-rule:
+      level: ignore
+      max-line-length: 120
+    prefer-value-in-head:
+      level: ignore
+  idiomatic:
+    ambiguous-scope:
+      level: error
+    boolean-assignment:
+      level: error
+    custom-has-key-construct:
+      level: error
+    custom-in-construct:
+      level: error
+    directory-package-mismatch:
+      exclude-test-suffix: true
+      level: error
+    equals-pattern-matching:
+      level: error
+    in-wildcard-key:
+      level: error
+    no-defined-entrypoint:
+      level: error
+    non-raw-regex-pattern:
+      level: error
+    prefer-set-or-object-rule:
+      level: error
+    single-item-in:
+      level: error
+    use-contains:
+      level: error
+    use-if:
+      level: error
+    use-in-operator:
+      level: error
+    use-object-keys:
+      level: error
+    use-some-for-output-vars:
+      level: error
+    use-strings-count:
+      level: error
+  imports:
+    avoid-importing-input:
+      level: error
+    circular-import:
+      level: error
+    confusing-alias:
+      level: error
+    ignored-import:
+      level: error
+    implicit-future-keywords:
+      level: error
+    import-after-rule:
+      level: error
+    import-shadows-builtin:
+      level: error
+    import-shadows-import:
+      level: error
+    pointless-import:
+      level: error
+    prefer-package-imports:
+      level: error
+    redundant-alias:
+      level: error
+    redundant-data-import:
+      level: error
+    unresolved-import:
+      level: error
+    unresolved-reference:
+      level: error
+      excepted_export_patterns:
+        - "**.test_*"
+    use-rego-v1:
+      level: error
+  performance:
+    defer-assignment:
+      level: error
+    non-loop-expression:
+      level: error
+    walk-no-path:
+      level: error
+    with-outside-test-context:
+      level: error
+  style:
+    avoid-get-and-list-prefix:
+      level: error
+    chained-rule-body:
+      level: error
+    comprehension-term-assignment:
+      level: error
+    default-over-else:
+      level: error
+      prefer-default-functions: false
+    default-over-not:
+      level: error
+    detached-metadata:
+      level: error
+    double-negative:
+      level: error
+    external-reference:
+      level: error
+      max-allowed: 2
+    file-length:
+      level: error
+      max-file-length: 500
+    function-arg-return:
+      except-functions:
+        - walk
+      level: error
+    line-length:
+      level: error
+      max-line-length: 120
+    messy-rule:
+      level: error
+    mixed-iteration:
+      level: error
+    no-whitespace-comment:
+      level: error
+    opa-fmt:
+      level: error
+    pointless-reassignment:
+      level: error
+    prefer-snake-case:
+      level: error
+    prefer-some-in-iteration:
+      ignore-if-sub-attribute: true
+      ignore-nesting-level: 2
+      level: error
+    rule-length:
+      count-comments: false
+      except-empty-body: true
+      level: error
+      max-rule-length: 30
+      max-test-rule-length: 60
+    rule-name-repeats-package:
+      level: error
+    todo-comment:
+      level: error
+    trailing-default-rule:
+      level: error
+    unconditional-assignment:
+      level: error
+    unnecessary-some:
+      level: error
+    use-assignment-operator:
+      level: error
+    yoda-condition:
+      level: error
+  testing:
+    dubious-print-sprintf:
+      level: error
+    file-missing-test-suffix:
+      level: error
+    identically-named-tests:
+      level: error
+    metasyntactic-variable:
+      level: error
+    print-or-trace-call:
+      level: error
+    test-outside-test-package:
+      level: error
+    todo-test:
+      level: error

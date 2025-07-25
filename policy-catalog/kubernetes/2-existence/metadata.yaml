@@ -1,0 +1,2 @@
+name: "Label Existence"
+description: Ensure every resource has a costcenter label and that the costcenter value is in the correct format

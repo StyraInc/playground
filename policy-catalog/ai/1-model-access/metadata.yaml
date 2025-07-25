@@ -1,0 +1,3 @@
+name: "Model Access"
+description: |
+  Use RBAC to control which models are available based on a user's groups.

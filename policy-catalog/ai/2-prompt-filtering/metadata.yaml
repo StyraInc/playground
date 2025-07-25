@@ -1,0 +1,3 @@
+name: "Prompt Filtering"
+description: |
+  Ensure that prompts from users are filtered before evaluation.

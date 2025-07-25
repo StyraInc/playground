@@ -1,0 +1,52 @@
+{
+    "permissions": {
+        "admin": [],
+        "tech-manager": [
+            "create-user",
+            "delete-user",
+            "update-user"
+        ],
+        "tech-lead": [
+            "read-user"
+        ],
+        "developer": [
+            "create-project",
+            "delete-project",
+            "update-project",
+            "read-project"
+        ],
+        "devops": [
+            "update-deployment",
+            "read-deployment"
+        ],
+        "platform-engineer": [
+            "create-deployment",
+            "delete-deployment"
+        ],
+        "junior-developer": [
+            "read-project",
+            "update-project"
+        ]
+    },
+    "roles_graph": {
+        "admin": [
+            "tech-manager"
+        ],
+        "tech-manager": [
+            "tech-lead"
+        ],
+        "tech-lead": [
+            "developer",
+            "devops",
+            "platform-engineer"
+        ],
+        "developer": [
+            "junior-developer"
+        ],
+        "platform-engineer": [
+            "devops"
+        ],
+        "devops": [],
+        "junior-developer": []
+    }
+}

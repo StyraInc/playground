@@ -1,0 +1,24 @@
+rules:
+  idiomatic:
+    no-defined-entrypoint:
+      level: ignore
+    directory-package-mismatch:
+      level: ignore
+  imports:
+    unresolved-reference:
+      level: ignore
+  style:
+    line-length:
+      ignore:
+        files:
+        # there are tokens in these files and they are long
+        - policy-catalog/ai/*
+    rule-length:
+      ignore:
+        files:
+          - test.rego
+  testing:
+    file-missing-test-suffix:
+      level: ignore
+    test-outside-test-package:
+      level: ignore
