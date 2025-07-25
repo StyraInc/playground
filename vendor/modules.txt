@@ -60,16 +60,6 @@ github.com/aws/aws-sdk-go/service/sts/stsiface
 # github.com/beorn7/perks v1.0.1
 ## explicit; go 1.11
 github.com/beorn7/perks/quantile
-# github.com/bytecodealliance/wasmtime-go/v3 v3.0.2
-## explicit; go 1.18
-github.com/bytecodealliance/wasmtime-go/v3
-github.com/bytecodealliance/wasmtime-go/v3/build/include
-github.com/bytecodealliance/wasmtime-go/v3/build/include/wasmtime
-github.com/bytecodealliance/wasmtime-go/v3/build/linux-aarch64
-github.com/bytecodealliance/wasmtime-go/v3/build/linux-x86_64
-github.com/bytecodealliance/wasmtime-go/v3/build/macos-aarch64
-github.com/bytecodealliance/wasmtime-go/v3/build/macos-x86_64
-github.com/bytecodealliance/wasmtime-go/v3/build/windows-x86_64
 # github.com/cespare/xxhash/v2 v2.3.0
 ## explicit; go 1.11
 github.com/cespare/xxhash/v2
@@ -152,7 +142,6 @@ github.com/open-policy-agent/opa/ast/json
 github.com/open-policy-agent/opa/bundle
 github.com/open-policy-agent/opa/capabilities
 github.com/open-policy-agent/opa/cover
-github.com/open-policy-agent/opa/features/wasm
 github.com/open-policy-agent/opa/format
 github.com/open-policy-agent/opa/internal/bundle
 github.com/open-policy-agent/opa/internal/cidr/merge
@@ -196,8 +185,6 @@ github.com/open-policy-agent/opa/internal/wasm/encoding
 github.com/open-policy-agent/opa/internal/wasm/instruction
 github.com/open-policy-agent/opa/internal/wasm/module
 github.com/open-policy-agent/opa/internal/wasm/opcode
-github.com/open-policy-agent/opa/internal/wasm/sdk/internal/wasm
-github.com/open-policy-agent/opa/internal/wasm/sdk/opa
 github.com/open-policy-agent/opa/internal/wasm/sdk/opa/capabilities
 github.com/open-policy-agent/opa/internal/wasm/sdk/opa/errors
 github.com/open-policy-agent/opa/internal/wasm/types
@@ -220,7 +207,6 @@ github.com/open-policy-agent/opa/v1/bundle
 github.com/open-policy-agent/opa/v1/capabilities
 github.com/open-policy-agent/opa/v1/config
 github.com/open-policy-agent/opa/v1/cover
-github.com/open-policy-agent/opa/v1/features/wasm
 github.com/open-policy-agent/opa/v1/format
 github.com/open-policy-agent/opa/v1/hooks
 github.com/open-policy-agent/opa/v1/ir
@@ -405,8 +391,8 @@ go.opentelemetry.io/otel/trace/noop
 # go.uber.org/multierr v1.11.0
 ## explicit; go 1.19
 go.uber.org/multierr
-# golang.org/x/oauth2 v0.25.0
-## explicit; go 1.18
+# golang.org/x/oauth2 v0.27.0
+## explicit; go 1.23.0
 golang.org/x/oauth2
 golang.org/x/oauth2/endpoints
 golang.org/x/oauth2/github
