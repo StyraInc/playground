@@ -13,7 +13,7 @@
     "babel-loader": "^8.4.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.2",
-    "css-loader": "^3.4.2",
+    "css-loader": "^7.1.2",
     "eslint": "^9.1.1",
     "file-loader": "^5.1.0",
     "globals": "^15.1.0",
