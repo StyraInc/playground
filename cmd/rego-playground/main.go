@@ -138,7 +138,7 @@ func run(cmd *cobra.Command, args []string) {
 	githubClientID := os.Getenv("PLAYGROUND_GITHUB_ID")
 	githubClientSecret := os.Getenv("PLAYGROUND_GITHUB_SECRET")
 	if githubClientID == "" || githubClientSecret == "" {
-		log.Fatal("failed to find the env variables PLAYGROUND_GITHUB_ID or PLAYGROUND_GITHUB_SECRET")
+		log.Warn("failed to find the env variables PLAYGROUND_GITHUB_ID or PLAYGROUND_GITHUB_SECRET")
 	}
 
 	if viper.GetBool(configKeyNoPersist) {
